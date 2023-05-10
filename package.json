@@ -4,11 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "concurrently \"npm:dev:*\"",
+    "dev:frontend": "vite --port 3000",
+    "dev:backend": "cargo watch -C ../rust-backend -x run",
+    "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "concurrently": "^8.0.1",
     "vue": "^3.2.47"
   },
   "devDependencies": {
